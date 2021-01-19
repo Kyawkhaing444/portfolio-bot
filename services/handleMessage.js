@@ -1,17 +1,14 @@
 const callSendAPI = require("./callSendAPI");
 
 module.exports = function handleMessage(sender_psid, received_message) {
-  // Handles messages events
-  let response;
 
   // Check if the message contains text
   if (received_message.text) {
-    IntroTextresponse = {
+    let IntroTextresponse = {
       text: `Hello! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing`,
     };
-    callSendAPI(sender_psid, IntroTextresponse);
 
-    PersistentResponse = {
+    let PersistentResponse = {
       persistent_menu: [
         {
           locale: "default",
@@ -48,9 +45,7 @@ module.exports = function handleMessage(sender_psid, received_message) {
       ],
     };
 
-    callSendAPI(sender_psid, PersistentResponse);
-
-    QuickReplyResponse = {
+    let QuickReplyResponse = {
       text: "",
       quick_replies: [
         {
@@ -76,7 +71,11 @@ module.exports = function handleMessage(sender_psid, received_message) {
       ],
     };
 
-    callSendAPI(sender_psid, QuickReplyResponse);
+    callSendAPI(sender_psid, IntroTextresponse).then(() => {
+      return callSendAPI(sender_psid, PersistentResponse).then(() => {
+        return callSendAPI(sender_psid, QuickReplyResponse);
+      });
+    });
   } else if (received_message.attachments) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;

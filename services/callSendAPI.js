@@ -1,6 +1,7 @@
-const request = require('request');
+const fetch = require("node-fetch");
 
-module.exports = function callSendAPI(sender_psid, response) { // Sends response messages via the Send API
+module.exports = function callSendAPI(sender_psid, response) {
+  // Sends response messages via the Send API
   // Construct the message body
   let request_body = {
     recipient: {
@@ -9,20 +10,10 @@ module.exports = function callSendAPI(sender_psid, response) { // Sends response
     message: response,
   };
 
-  // Send the HTTP request to the Messenger Platform
-  request(
-    {
-      uri: "https://graph.facebook.com/v9.0/me/messages",
-      qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
-      method: "POST",
-      json: request_body,
-    },
-    (err, res, body) => {
-      if (!err) {
-        console.log("message sent!");
-      } else {
-        console.error("Unable to send message:" + err);
-      }
-    }
-  );
+  const qs = "access_token=" + encodeURIComponent(process.env.PAGE_ACCESS_TOKEN);
+  return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(request_body),
+  });
 };
