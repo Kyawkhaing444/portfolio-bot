@@ -1,14 +1,18 @@
 const callSendAPI = require("./callSendAPI");
 
-module.exports = function handleMessage(sender_psid, received_message) { // Handles messages events
+module.exports = function handleMessage(sender_psid, received_message) {
+  // Handles messages events
   let response;
 
   // Check if the message contains text
   if (received_message.text) {
     // Create the payload for a basic text message
-    response = {
-      text: `You sent the message: "${received_message.text}". Now send me an image!`,
-    };
+    // if (received_message.text === "Get Started") {
+      response = [
+        { text: "Hello {{user_first_name}}! Welcome to Kyaw Khaing's world!" },
+        { text: "You can ask whatever you want about Kyaw Khaing" },
+      ];
+    // }
   } else if (received_message.attachments) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
