@@ -113,8 +113,9 @@ module.exports = function handlePostback(sender_psid, received_postback) {
             {
               title: "CEO and Tech Lead at Ka Wi",
               image_url:
-                "https://kawi-articlebook.vercel.app/images/home_page.svg",
-              subtitle: "Tech stack - Nextjs, MongoDB, Expressjs, Reactjs, Nodejs",
+                "https://scontent.fmdl1-2.fna.fbcdn.net/v/t1.0-9/103448906_107874197636680_1905209692539182222_o.jpg?_nc_cat=110&ccb=2&_nc_sid=09cbfe&_nc_ohc=kY3Jm6cNpE4AX__Xr8J&_nc_ht=scontent.fmdl1-2.fna&oh=ffabfccf8a886e889feb5c00579e54f4&oe=602BEBDB",
+              subtitle:
+                "Tech stack - Nextjs, MongoDB, Expressjs, Reactjs, Nodejs",
               default_action: {
                 type: "web_url",
                 url: "https://kawi-articlebook.vercel.app/",
@@ -169,7 +170,7 @@ module.exports = function handlePostback(sender_psid, received_postback) {
       },
     };
     callSendAPI(sender_psid, response);
-  }else if(payload === "projects"){
+  } else if (payload === "projects") {
     response = {
       attachment: {
         type: "template",
@@ -177,19 +178,71 @@ module.exports = function handlePostback(sender_psid, received_postback) {
           template_type: "generic",
           elements: [
             {
-              title: "Software Engineering Intern at BridgeBurma",
-              image_url:
-                "https://bb-core-graphics.s3.us-east-2.amazonaws.com/landingGraphic.png",
-              subtitle: "MERN stack - MongoDB, Expressjs, Reactjs, Nodejs",
+              title: "PSBOT",
+              subtitle:
+                "PSbot, an AI-based android application, is designed to prevent child rape cases such as Victoria child rape case, especially in primary school.",
               default_action: {
                 type: "web_url",
-                url: "http://www.bridgeburma.com/",
+                url: "https://bit.ly/kkkproject3",
                 webview_height_ratio: "tall",
               },
               buttons: [
                 {
                   type: "web_url",
-                  url: "http://www.bridgeburma.com/",
+                  url: "https://bit.ly/kkkproject3",
+                  title: "Read more",
+                },
+              ],
+            },
+            {
+              title: "CoronaHelp MM MOBILE APP",
+              subtitle:
+                "This app has been being developed to brief the latest information about COVID-19 conveniently and instantaneously for two months. In this app, you can access quite a number of information about COVID-19, especially in the Myanmar language. You can dig up this app by using the below links.",
+              default_action: {
+                type: "web_url",
+                url:
+                  "https://web.facebook.com/CoronaHelpMM/posts/117275506594907",
+                webview_height_ratio: "tall",
+              },
+              buttons: [
+                {
+                  type: "web_url",
+                  url:
+                    "https://web.facebook.com/CoronaHelpMM/posts/117275506594907",
+                  title: "Read more",
+                },
+              ],
+            },
+            {
+              title: "PSBOT",
+              subtitle:
+                "PSbot, an AI-based android application, is designed to prevent child rape cases such as Victoria child rape case, especially in primary school.",
+              default_action: {
+                type: "web_url",
+                url: "https://bit.ly/kkkproject3",
+                webview_height_ratio: "tall",
+              },
+              buttons: [
+                {
+                  type: "web_url",
+                  url: "https://bit.ly/kkkproject3",
+                  title: "Read more",
+                },
+              ],
+            },
+            {
+              title: "PSBOT",
+              subtitle:
+                "PSbot, an AI-based android application, is designed to prevent child rape cases such as Victoria child rape case, especially in primary school.",
+              default_action: {
+                type: "web_url",
+                url: "https://bit.ly/kkkproject3",
+                webview_height_ratio: "tall",
+              },
+              buttons: [
+                {
+                  type: "web_url",
+                  url: "https://bit.ly/kkkproject3",
                   title: "Read more",
                 },
               ],
@@ -199,7 +252,7 @@ module.exports = function handlePostback(sender_psid, received_postback) {
       },
     };
     callSendAPI(sender_psid, response);
-  }else if(payload === "skills"){
+  } else if (payload === "skills") {
     response = {
       attachment: {
         type: "template",
@@ -207,29 +260,24 @@ module.exports = function handlePostback(sender_psid, received_postback) {
           template_type: "generic",
           elements: [
             {
-              title: "Software Engineering Intern at BridgeBurma",
-              image_url:
-                "https://bb-core-graphics.s3.us-east-2.amazonaws.com/landingGraphic.png",
-              subtitle: "MERN stack - MongoDB, Expressjs, Reactjs, Nodejs",
-              default_action: {
-                type: "web_url",
-                url: "http://www.bridgeburma.com/",
-                webview_height_ratio: "tall",
-              },
-              buttons: [
-                {
-                  type: "web_url",
-                  url: "http://www.bridgeburma.com/",
-                  title: "Read more",
-                },
-              ],
+              title: "FULL-STACK WEB DEVELOPMENT",
+              subtitle:
+                "JAVASCRIPT, PYTHON, PHP, HTML, CSS, Reactjs, Express, Nodejs, FLASK, MongoDB, PostgreSQL, BOOTSTRAP, MYSQL, GIT, QA and testing with chai",
+            },
+            {
+              title: "MOBILE DEVELOPMENT",
+              subtitle: "DART, FLUTTER, FIREBASE",
+            },
+            {
+              title: "MACHINE LEARNING",
+              subtitle: "TensorFlow, KERAS",
             },
           ],
         },
       },
     };
     callSendAPI(sender_psid, response);
-  }else if(payload === "education"){
+  } else if (payload === "education") {
     response = {
       attachment: {
         type: "template",
@@ -237,19 +285,19 @@ module.exports = function handlePostback(sender_psid, received_postback) {
           template_type: "generic",
           elements: [
             {
-              title: "Software Engineering Intern at BridgeBurma",
+              title: "UNIVERSITY OF COMPUTER STUDIES, MANDALAY",
               image_url:
-                "https://bb-core-graphics.s3.us-east-2.amazonaws.com/landingGraphic.png",
-              subtitle: "MERN stack - MongoDB, Expressjs, Reactjs, Nodejs",
+                "https://www.ucsm.edu.mm/wp-content/uploads/2020/11/cropped-IMG_4089-scaled-1-1536x1517.jpg",
+              subtitle: "B.C.Sc (COMPUTER SCIENCE) | 2016 – PRESENT",
               default_action: {
                 type: "web_url",
-                url: "http://www.bridgeburma.com/",
+                url: "http://www.ucsm.edu.mm/",
                 webview_height_ratio: "tall",
               },
               buttons: [
                 {
                   type: "web_url",
-                  url: "http://www.bridgeburma.com/",
+                  url: "http://www.ucsm.edu.mm/",
                   title: "Read more",
                 },
               ],
