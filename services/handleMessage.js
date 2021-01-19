@@ -8,10 +8,10 @@ module.exports = function handleMessage(sender_psid, received_message) {
   if (received_message.text) {
     // Create the payload for a basic text message
     // if (received_message.text === "Get Started") {
-      response = [
-        { text: "Hello {{user_first_name}}! Welcome to Kyaw Khaing's world!" },
-        { text: "You can ask whatever you want about Kyaw Khaing" },
-      ];
+    response = {
+      text:
+        "Hello {{user_first_name}}! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing",
+    };
     // }
   } else if (received_message.attachments) {
     // Gets the URL of the message attachment
