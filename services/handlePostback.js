@@ -11,8 +11,10 @@ module.exports = function handlePostback(sender_psid, received_postback) {
   if (payload === "Get Started") {
     response = {
       text:
-        `Hello ${sender_psid}! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing`,
+        `Hello! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing`,
     };
+  }else if (payload === "work"){
+    
   }
   // Send the message to acknowledge the postback
   callSendAPI(sender_psid, response);
