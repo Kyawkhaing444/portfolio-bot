@@ -8,13 +8,13 @@ module.exports = function handleMessage(sender_psid, received_message) {
   let response;
   // Check if the message contains text
   if (received_message.text) {
-    if(received_message.text === "work"){
+    if(received_message.text === "Work"){
        response = workExperience();
-    }else if(received_message.text === "projects"){
+    }else if(received_message.text === "Projects"){
       response = projects();
-    }else if(received_message.text === "education"){
+    }else if(received_message.text === "Education"){
       response = education();
-    }else if(received_message.text === "skills"){
+    }else if(received_message.text === "Skills"){
       response = skills();
     }else{
       response = {
