@@ -4,7 +4,7 @@ const workExperience = require("../components/workExperience");
 const education = require("../components/education");
 const projects = require("../components/projects");
 const skills = require("../components/skills");
-const persistentMenu = require("../components/persistentMenu");
+let persistentMenu = require("../components/persistentMenu");
 
 module.exports = function handlePostback(sender_psid, received_postback) {
   // Handles messaging_postbacks events
