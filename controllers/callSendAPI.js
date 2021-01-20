@@ -4,7 +4,7 @@ module.exports = function callSendAPI(sender_psid, response) {
   const qs =
     "access_token=" + encodeURIComponent(process.env.PAGE_ACCESS_TOKEN);
 
-  if (response.persistent_menu !== underfined) {
+  if (response.persistent_menu !== null) {
     return fetch(
       "https://graph.facebook.com/v9.0/me/custom_user_settings?" + qs,
       {
