@@ -15,7 +15,8 @@ module.exports = function handlePostback(sender_psid, received_postback) {
 
   // Set the response based on the postback payload
   if (payload === "Get Started") {
-    return callSendAPI(sender_psid, persistentMenu);
+    let persistentMenuResponse = persistentMenu();
+    return callSendAPI(sender_psid, persistentMenuResponse);
   } else if (payload === "work") {
     response = workExperience();
     callSendAPI(sender_psid, response);
