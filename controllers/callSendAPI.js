@@ -13,7 +13,9 @@ module.exports = function callSendAPI(sender_psid, response) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(response),
       }
-    );
+    ).then(() => {
+      return quickReply(sender_psid);
+    });
   } else {
     let request_body = {
       recipient: {
@@ -27,7 +29,7 @@ module.exports = function callSendAPI(sender_psid, response) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(request_body),
     }).then(() => {
-      return quickReply();
+      return quickReply(sender_psid);
     });
   }
 };
