@@ -69,7 +69,6 @@ module.exports = function callSendAPI(sender_psid, response) {
             id: sender_psid,
           },
           message: {
-            text: `Hello! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing`,
             quick_replies: [
               {
                 content_type: "text",
