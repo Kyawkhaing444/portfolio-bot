@@ -20,12 +20,15 @@ module.exports = function handlePostback(sender_psid, received_postback) {
     let QuickReplyResponse = quickReply();
     const qs =
       "access_token=" + encodeURIComponent(process.env.PAGE_ACCESS_TOKEN);
-    return callSendAPI(sender_psid, QuickReplyResponse).then(() => {
-      fetch("https://graph.facebook.com/v9.0/me/custom_user_settings?" + qs, {
+    return fetch(
+      "https://graph.facebook.com/v9.0/me/custom_user_settings?" + qs,
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(PersistentResponse),
-      });
+      }
+    ).then(() => {
+      return callSendAPI(sender_psid, QuickReplyResponse);
     });
   } else if (payload === "work") {
     response = workExperience();
