@@ -1,14 +1,27 @@
+const education = require("../components/education");
+const projects = require("../components/projects");
+const skills = require("../components/skills");
+const workExperience = require("../components/workExperience");
 const callSendAPI = require("./callSendAPI");
 
 module.exports = function handleMessage(sender_psid, received_message) {
-
+  let response;
   // Check if the message contains text
   if (received_message.text) {
-    let IntroTextresponse = {
-      text: `Please use the persistent menu`,
-    };
-
-    callSendAPI(sender_psid, IntroTextresponse);
+    if(received_message.text === "work"){
+       response = workExperience();
+    }else if(received_message.text === "projects"){
+      response = projects();
+    }else if(received_message.text === "education"){
+      response = education();
+    }else if(received_message.text === "skills"){
+      response = skills();
+    }else{
+      response = {
+        "text": "Please use the persistent menu and quick reply"
+      }
+    }
+    callSendAPI(sender_psid, response);
   } else if (received_message.attachments) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
