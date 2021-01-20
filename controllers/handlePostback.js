@@ -17,31 +17,7 @@ module.exports = function handlePostback(sender_psid, received_postback) {
   // Set the response based on the postback payload
   if (payload === "Get Started") {
     let PersistentResponse = persistentMenu();
-    let QuickReplyResponse = {
-      text: `Hello! Welcome to Kyaw Khaing's world! You can ask whatever you want about Kyaw Khaing`,
-      quick_replies: [
-        {
-          content_type: "text",
-          title: "Work",
-          payload: "work",
-        },
-        {
-          content_type: "text",
-          title: "Projects",
-          payload: "projects",
-        },
-        {
-          content_type: "text",
-          title: "Skills",
-          payload: "skills",
-        },
-        {
-          content_type: "text",
-          title: "Education",
-          payload: "Education",
-        },
-      ],
-    };
+    let QuickReplyResponse = quickReply();
     const qs =
       "access_token=" + encodeURIComponent(process.env.PAGE_ACCESS_TOKEN);
     return fetch(
