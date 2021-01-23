@@ -26,13 +26,48 @@ describe("Functional Tests", function () {
         .post("/webhook")
         .send({
           object: "page",
-          entry: [{ messaging: [{ message: "TEST_MESSAGE" }] }],
+          entry: [
+            {
+              messaging: [
+                {
+                  message: "TEST_MESSAGE",
+                  sender: {
+                    id: process.env.PSID,
+                  },
+                },
+              ],
+            },
+          ],
         })
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.text, "EVENT_RECEIVED");
           done();
         });
     });
+
+    // it("Check the Get Started Button", function (done) {
+    //   chai
+    //     .request(server)
+    //     .post("/webhook")
+    //     .send({
+    //       object: "page",
+    //       entry: [
+    //         {
+    //           messaging: [
+    //             {
+    //               postback : "Get Started",
+    //               sender: {
+    //                 id: process.env.PSID,
+    //               },
+    //             },
+    //           ],
+    //         },
+    //       ],
+    //     })
+    //     .end(function (err, res) {
+    //       assert.equal(res.status, 200);
+    //       done();
+    //     });
+    // });
   });
 });
