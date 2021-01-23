@@ -59,7 +59,7 @@ module.exports = function callSendAPI(sender_psid, response) {
     return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify("jfdasfd"),
+      body: JSON.stringify(request_body),
     }).then((res) => {
       if (res.status !== 200) {
         throw new Error(`Send API Request Failed ## Code (${res.status}) ##`);
