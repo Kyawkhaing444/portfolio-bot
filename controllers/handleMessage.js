@@ -7,13 +7,13 @@ const callSendAPI = require("./callSendAPI");
 module.exports = function handleMessage(sender_psid, received_message) {
   let response;
   // Check if the message contains text
-  if (received_message.text === "Work") {
+  if (received_message === "Work") {
     response = workExperience();
-  } else if (received_message.text === "Projects") {
+  } else if (received_message === "Projects") {
     response = projects();
-  } else if (received_message.text === "Education") {
+  } else if (received_message === "Education") {
     response = education();
-  } else if (received_message.text === "Skills") {
+  } else if (received_message === "Skills") {
     response = skills();
   } else {
     response = {
