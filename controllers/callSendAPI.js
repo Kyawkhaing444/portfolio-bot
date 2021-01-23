@@ -1,17 +1,14 @@
-const { default: axios } = require("axios");
 const fetch = require("node-fetch");
 
-module.exports = async function callSendAPI(sender_psid, response) {
+module.exports = function callSendAPI(sender_psid, response) {
   const qs =
     "access_token=" + encodeURIComponent(process.env.PAGE_ACCESS_TOKEN);
-  const URL = "https://graph.facebook.com/v9.0/me/messages?" + qs;
-  const persistentURL =
-    "https://graph.facebook.com/v9.0/me/custom_user_settings?" + qs;
 
   if (response.persistent_menu !== undefined) {
-    const responseQuickReply = await axios.post(
-      URL,
-      JSON.stringify({
+    return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
         recipient: {
           id: sender_psid,
         },
@@ -40,25 +37,17 @@ module.exports = async function callSendAPI(sender_psid, response) {
             },
           ],
         },
-      })
-    );
-    const { data } = responseQuickReply;
-    if (data.error) {
-      throw new Error(
-        `Send API Request Failed ## Code (${data.error.code}) ##`
+      }),
+    }).then(() => {
+      return fetch(
+        "https://graph.facebook.com/v9.0/me/custom_user_settings?" + qs,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(response),
+        }
       );
-    }
-    const responsePersistent = await axios.post(
-      persistentURL,
-      JSON.stringify(response)
-    );
-    const { dataper } = responsePersistent;
-    if (dataper.error) {
-      throw new Error(
-        `Send API Request Failed ## Code (${dataper.error.code}) ##`
-      );
-    }
-    return;
+    });
   } else {
     let request_body = {
       recipient: {
@@ -70,8 +59,11 @@ module.exports = async function callSendAPI(sender_psid, response) {
     return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request_body),
-    }).then(() => {
+      body: JSON.stringify("jfdasfd"),
+    }).then((res) => {
+      if (res.status !== 200) {
+        throw new Error(`Send API Request Failed ## Code (${res.status}) ##`);
+      }
       return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -80,7 +72,7 @@ module.exports = async function callSendAPI(sender_psid, response) {
             id: sender_psid,
           },
           message: {
-            text: `What do you want to ask?`,
+            text: `What else do you want to ask?`,
             quick_replies: [
               {
                 content_type: "text",
@@ -105,6 +97,11 @@ module.exports = async function callSendAPI(sender_psid, response) {
             ],
           },
         }),
+      }).then((res) => {
+        if (res.status !== 200) {
+          throw new Error(`Send API Request Failed ## Code (${res.status}) ##`);
+        }
+        return;
       });
     });
   }
