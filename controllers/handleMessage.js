@@ -20,6 +20,5 @@ module.exports = function handleMessage(sender_psid, received_message) {
       text: "Please use the persistent menu and quick reply",
     };
   }
-  console.log(response);
   callSendAPI(sender_psid, response);
 };
