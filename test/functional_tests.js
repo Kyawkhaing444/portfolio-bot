@@ -30,11 +30,7 @@ describe("Functional Tests", function () {
             {
               messaging: [
                 {
-<<<<<<< HEAD
-                  message: "TEST_MESSAGE",
-=======
                   message: "Test-Message",
->>>>>>> 3984f65f0e16a0d0f4893abd00bda0942c9abd3b
                   sender: {
                     id: process.env.PSID,
                   },
