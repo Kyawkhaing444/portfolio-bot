@@ -6,4 +6,8 @@ Express, Chai
 ## Deployment
 Heroku
 ## Demo
-<img src="https://user-images.githubusercontent.com/34454546/88152848-a361a680-cc2a-11ea-9393-c82b334b18ff.gif" alt="Image output" width="200" style="float: left; display: inline-block;"/>
+<img src="https://media.giphy.com/media/TIvMgLB77jxWUFBUOi/giphy.gif" alt="Image output" width="200"/>
+
+<img src="https://media.giphy.com/media/IosEu7mFhvkdzzH85l/giphy.gif" alt="Image output" width="200"/>
+
+<img src="https://media.giphy.com/media/BGHBlNPqpvPDb3XSTE/giphy.gif" alt="Image output" width="200" />
