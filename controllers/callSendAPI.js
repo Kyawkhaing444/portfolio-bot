@@ -67,64 +67,45 @@ module.exports = async function callSendAPI(sender_psid, response) {
       message: response,
     };
 
-    try {
-      const responseNormalText = await axios.post(
-        URL,
-        JSON.stringify("11")
-      );
-      console.log("data", responseNormalText);
-      const { data } = responseNormalText;
-      console.log("data", data.error);
-    } catch (e) {
-      throw new Error(`Send API Request Failed ## Code (${e}) ##`);
-    }
-    if (data.error) {
-      throw new Error(
-        `Send API Request Failed ## Code (${data.error.code}) ##`
-      );
-    }
-
-    const responseQuickReply = await axios.post(
-      URL,
-      JSON.stringify({
-        recipient: {
-          id: sender_psid,
-        },
-        message: {
-          text: `What else do you want to ask?`,
-          quick_replies: [
-            {
-              content_type: "text",
-              title: "Work",
-              payload: "work",
-            },
-            {
-              content_type: "text",
-              title: "Projects",
-              payload: "projects",
-            },
-            {
-              content_type: "text",
-              title: "Skills",
-              payload: "skills",
-            },
-            {
-              content_type: "text",
-              title: "Education",
-              payload: "Education",
-            },
-          ],
-        },
-      })
-    );
-
-    const { dataQuick } = responseQuickReply;
-
-    if (dataQuick.error) {
-      throw new Error(
-        `Send API Request Failed ## Code (${dataQuick.error.code}) ##`
-      );
-    }
-    return;
+    return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(request_body),
+    }).then(() => {
+      return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          recipient: {
+            id: sender_psid,
+          },
+          message: {
+            text: `What do you want to ask?`,
+            quick_replies: [
+              {
+                content_type: "text",
+                title: "Work",
+                payload: "work",
+              },
+              {
+                content_type: "text",
+                title: "Projects",
+                payload: "projects",
+              },
+              {
+                content_type: "text",
+                title: "Skills",
+                payload: "skills",
+              },
+              {
+                content_type: "text",
+                title: "Education",
+                payload: "Education",
+              },
+            ],
+          },
+        }),
+      });
+    });
   }
 };
