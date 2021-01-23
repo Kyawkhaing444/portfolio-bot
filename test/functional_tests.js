@@ -26,11 +26,21 @@ describe("Functional Tests", function () {
         .post("/webhook")
         .send({
           object: "page",
-          entry: [{ messaging: [{ message: "TEST_MESSAGE" }] }],
+          entry: [
+            {
+              messaging: [
+                {
+                  message: "Test-Message",
+                  sender: {
+                    id: process.env.PSID,
+                  },
+                },
+              ],
+            },
+          ],
         })
         .end(function (err, res) {
           assert.equal(res.status, 200);
-          assert.equal(res.text, "EVENT_RECEIVED");
           done();
         });
     });

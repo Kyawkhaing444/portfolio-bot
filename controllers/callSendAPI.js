@@ -59,8 +59,11 @@ module.exports = function callSendAPI(sender_psid, response) {
     return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(request_body),
-    }).then(() => {
+      body: JSON.stringify("jfdasfd"),
+    }).then((res) => {
+      if (res.status !== 200) {
+        throw new Error(`Send API Request Failed ## Code (${res.status}) ##`);
+      }
       return fetch("https://graph.facebook.com/v9.0/me/messages?" + qs, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -94,6 +97,11 @@ module.exports = function callSendAPI(sender_psid, response) {
             ],
           },
         }),
+      }).then((res) => {
+        if (res.status !== 200) {
+          throw new Error(`Send API Request Failed ## Code (${res.status}) ##`);
+        }
+        return;
       });
     });
   }
