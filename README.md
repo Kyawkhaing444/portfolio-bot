@@ -1,6 +1,6 @@
 # portfolio-bot
 ## About this project
-This project is the take-home project for the expa.ai backend developer interview. In this project, I created a messenger chatbot that can explain my portfolio ( work experience, projects, etc).
+In this project, I created a messenger chatbot that can explain my portfolio ( work experience, projects, etc).
 ## Tech Stack
 Express, Chai
 ## Deployment
